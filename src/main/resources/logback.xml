@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="encoding" value="UTF-8"/>
+    <conversionRule conversionWord="m" converterClass="ch.qos.logback.classic.pattern.ComplexMessageConverter"/>
+
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="FILE">
+        <file>logs/wolf.log</file>
+        <Append>true</Append>
+        <prudent>false</prudent>
+        <encoder class="ch.qos.logback.classic.encoder.CommonPatternLayoutEncoder">
+            <useDefaultRegex>true</useDefaultRegex>
+            <policy>replace</policy>
+            <maxLength>2048</maxLength>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/wolf.log.%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxFileSize>1024MB</maxFileSize>
+            <maxHistory>32</maxHistory>
+            <totalSizeCap>32GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+        <encoder class="ch.qos.logback.classic.encoder.CommonPatternLayoutEncoder">
+            <useDefaultRegex>true</useDefaultRegex>
+            <policy>replace</policy>
+            <maxLength>2048</maxLength>
+        </encoder>
+    </appender>
+
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

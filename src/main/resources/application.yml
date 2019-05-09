@@ -1,0 +1,27 @@
+
+spring:
+  application:
+    name: wolf
+
+server:
+  port: 19992
+
+eureka:
+  client:
+    sleep-time-after-shutdown: 30
+    service-url:
+      defaultZone: http://localhost:14101/eureka/
+    healthcheck:
+      enabled: true
+    fetch-registry: false
+
+logging:
+  level:
+    root: INFO
+    com.vipkid.wolf: DEBUG
+
+logbook:
+  format.style: json
+  write:
+    category: com.example.xpxu.wolf
+    level: INFO
